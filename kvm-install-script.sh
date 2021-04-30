@@ -13,6 +13,7 @@ if [ ${SUDO_USER} ]; then
 else
   echo "Run from Root User? Prefer to run from normal user with sudo command" >&2
   echo "Sample sudo ./kvm-install-script.sh" >&2
+  exit 1
 fi
 
 apt update
