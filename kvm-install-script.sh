@@ -18,25 +18,29 @@ fi
 
 apt update
 
-UBUNTU=`lsb_release -d`
-echo ${UBUNTU}
-if [[ ${UBUNTU} =~ "Ubuntu 20.04" ]]; then
-  VERSION=${BASH_REMATCH[0]}
-fi
+OS=`lsb_release -i | awk -F':' '{print $2}' | sed -e "s/\s//g"`
+VERSION=`lsb_release -r | awk -F':' '{print $2}' | sed -e "s/\s//g"`
 
-echo ${VERSION}
+echo $OS
+echo $VERSION
 
-case ${VERSION} in
-  "Ubuntu 20.04")
-    apt install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager
-    ;;
-  "Ubuntu 18.04.4 LTS")
-    apt install -y qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
+case ${OS} in
+  "ubuntu")
+    case ${RELEASE} in
+      "20.04")
+        apt install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager
+        ;;
+      "18.04")
+        apt install -y qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
+        ;;
+      *)
+        echo "NO VERSION MATCH"
+        ;;
+    esac
     ;;
   *)
-  echo "NO MATCH"
+    echo "NO OS MATCH"
     ;;
-esac
 
 adduser ${SUDO_USER} libvirt
 adduser ${SUDO_USER} libvirt-qemu
