@@ -6,7 +6,7 @@ install_ubuntu() {
   apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
 
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-  
+
   echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" |  tee /etc/apt/sources.list.d/docker.list > /dev/null
@@ -32,23 +32,27 @@ fi
 
 apt update
 
-UBUNTU=`lsb_release -d`
-echo $UBUNTU
-if [[ ${UBUNTU} =~ "Ubuntu 20.04" ]]; then
-  VERSION=${BASH_REMATCH[0]}
-fi
+OS=`lsb_release -i | awk -F':' '{print $2}' | sed -e "s/\s//g"`
+VERSION=`lsb_release -r | awk -F':' '{print $2}' | sed -e "s/\s//g"`
 
+echo $OS
 echo $VERSION
 
-case ${VERSION} in
-  "Ubuntu 20.04")
-    install_ubuntu
-    ;;
-  "Ubuntu 18.04.4 LTS")
-    install_ubuntu
+case ${OS} in
+  "ubuntu")
+    case ${RELEASE} in
+      "20.04")
+        install_ubuntu
+        ;;
+      "18.04")
+        install_ubuntu
+        ;;
+      *)
+        echo "NO VERSION MATCH"
+        ;;
+    esac
     ;;
   *)
-  echo "NO MATCH"
+    echo "NO OS MATCH"
     ;;
 esac
-
