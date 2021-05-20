@@ -44,7 +44,7 @@ case ${VERSION} in
   "Ubuntu 20.04")
     install_ubuntu
     ;;
-  "Ubuntu 18.04")
+  "Ubuntu 18.04.4 LTS")
     install_ubuntu
     ;;
   *)
