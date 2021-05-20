@@ -41,6 +41,7 @@ case ${OS} in
   *)
     echo "NO OS MATCH"
     ;;
+esac
 
 adduser ${SUDO_USER} libvirt
 adduser ${SUDO_USER} libvirt-qemu
