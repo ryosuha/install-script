@@ -39,7 +39,7 @@ echo $OS
 echo $VERSION
 
 case ${OS} in
-  "ubuntu")
+  "Ubuntu")
     case ${RELEASE} in
       "20.04")
         install_ubuntu
