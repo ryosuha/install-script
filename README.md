@@ -9,7 +9,7 @@ Automatic installation script.
 
 - KVM installation
 > $ cd install-script
-> $ sudo ./kvm-install-script.sh
+$ sudo ./kvm-install-script.sh
 
 - Docker installation
 > $ cd install-script
