@@ -7,5 +7,6 @@ Automatic installation script.
 sudo ./kvm-install-script.sh
 
 - Docker installation
-
-sudo ./docker-install-script.sh
+> $ git clone https://github.com/ryosuha/install-script.git
+> $ cd install-script
+> $ sudo ./docker-install-script.sh
