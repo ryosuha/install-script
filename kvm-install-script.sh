@@ -30,7 +30,7 @@ case ${VERSION} in
   "Ubuntu 20.04")
     apt install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager
     ;;
-  "Ubuntu 18.04")
+  "Ubuntu 18.04.4 LTS")
     apt install -y qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
     ;;
   *)
