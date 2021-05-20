@@ -26,7 +26,7 @@ echo $VERSION
 
 case ${OS} in
   "Ubuntu")
-    case ${RELEASE} in
+    case ${VERSION} in
       "20.04")
         apt install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager
         ;;

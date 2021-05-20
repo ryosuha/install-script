@@ -40,7 +40,7 @@ echo $VERSION
 
 case ${OS} in
   "Ubuntu")
-    case ${RELEASE} in
+    case ${VERSION} in
       "20.04")
         install_ubuntu
         ;;
