@@ -18,7 +18,9 @@ Automatic installation script.
 > $ sudo ./docker-install-script.sh
 
 - FRR install script
+ 
 Ubuntu 20.04 only
+
 will enable mpls forwarding on all ens interface
 
 > $ cd install-script
