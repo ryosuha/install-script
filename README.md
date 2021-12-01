@@ -32,6 +32,7 @@ will enable mpls forwarding on all ens interface
 Ubuntu 20.04 only with k8s(CRI-O) v1.21
 
 > $ cd k8s/
+
 > $ sudo ./k8s-install-script.sh
 
 for additional cni(canal)
