@@ -41,4 +41,4 @@ additional CNI (Canal) script
 
 for additional cni(canal)
 
-> $ sudo ./
+> $ sudo ./cni-canal-install-script.sh
