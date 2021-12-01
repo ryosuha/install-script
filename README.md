@@ -23,6 +23,22 @@ Ubuntu 20.04 only
 
 will enable mpls forwarding on all ens interface
 
-> $ cd install-script
+> $ cd k8s
 
 > $ sudo ./frr-install-script.sh
+
+- k8s install script
+
+Ubuntu 20.04 only with k8s(CRI-O) v1.21
+
+additional CNI (Canal) script
+
+> $ sudo ./cni-canal-install-script.sh
+
+
+
+> $ sudo ./k8s-install-script.sh
+
+for additional cni(canal)
+
+> $ sudo ./
