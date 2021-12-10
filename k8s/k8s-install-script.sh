@@ -61,6 +61,7 @@ install_ubuntu2004() {
     cp -i /etc/kubernetes/admin.conf $USER_HOME/.kube/config
     chown $SUDO_UID:$SUDO_GID $USER_HOME/.kube/config
 
+    su $SUDO_USER -c "kubectl taint nodes $HOSTNAME node-role.kubernetes.io/master-"
 }
 
 
