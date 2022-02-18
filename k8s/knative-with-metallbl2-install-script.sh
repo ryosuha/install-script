@@ -36,7 +36,7 @@ data:
     - name: default
       protocol: layer2
       addresses:
-      ${1}-${2}
+      - ${1}-${2}
 EOF
 
     wget https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/namespace.yaml -P tmp/
