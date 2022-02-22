@@ -7,6 +7,12 @@ install_ubuntu2004() {
     kVERSION1=1.21
     kVERSIONLONG=1.21.0-00
 
+    if [ ${1} ]; then
+        kVERSION=${1}:${1}.0
+        kVERSION1=${1}
+        kVERSIONLONG=${1}.0-00
+    fi
+    
     apt update
     apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 
@@ -68,7 +74,8 @@ install_ubuntu2004() {
 
 if ! [ $(id -u) = 0 ]; then
    echo "The script need to be run as root." >&2
-   echo "Sample sudo ./frr-install-script.sh" >&2
+   echo "Sample sudo ./k8s-install-script.sh [OPTIONAL(k8s version)]" >&2
+   echo "Sample sudo ./k8s-install-script.sh [1.21]" >&2
    exit 1
 fi
 
@@ -76,8 +83,13 @@ if [ ${SUDO_USER} ]; then
   echo ${SUDO_USER}
 else
   echo "Run from Root User? Prefer to run from normal user with sudo command" >&2
-  echo "Sample sudo ./frr-install-script.sh" >&2
+  echo "Sample sudo ./k8s-install-script.sh [OPTIONAL(k8s version)]" >&2
+  echo "Sample sudo ./k8s-install-script.sh [1.21]" >&2
   exit 1
+fi
+
+if [ ${1} ]; then
+  echo "Will install k8s ver ${1}"
 fi
 
 OS=`lsb_release -i | awk -F':' '{print $2}' | sed -e "s/\s//g"`
