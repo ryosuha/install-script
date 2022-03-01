@@ -101,7 +101,7 @@ case ${OS} in
   "Ubuntu")
     case ${VERSION} in
       "20.04")
-        install_ubuntu2004
+        install_ubuntu2004 ${1}
         ;;
       "18.04")
         #install_ubuntu1804
