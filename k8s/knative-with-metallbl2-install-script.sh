@@ -48,10 +48,10 @@ EOF
     su $SUDO_USER -c "kubectl apply -f tmp/metallb-config.yaml"
 
 
-    wget https://github.com/knative/serving/releases/download/knative-v1.0.0/serving-crds.yaml -P tmp/
-    wget https://github.com/knative/serving/releases/download/knative-v1.0.0/serving-core.yaml -P tmp/
-    wget https://github.com/knative/net-contour/releases/download/knative-v1.0.0/contour.yaml -P tmp/
-    wget https://github.com/knative/net-contour/releases/download/knative-v1.0.0/net-contour.yaml -P tmp/
+    wget https://github.com/knative/serving/releases/download/knative-v1.3.0/serving-crds.yaml -P tmp/
+    wget https://github.com/knative/serving/releases/download/knative-v1.3.0/serving-core.yaml -P tmp/
+    wget https://github.com/knative/net-contour/releases/download/knative-v1.3.0/contour.yaml -P tmp/
+    wget https://github.com/knative/net-contour/releases/download/knative-v1.3.0/net-contour.yaml -P tmp/
 
 
     su $SUDO_USER -c "kubectl apply -f tmp/serving-crds.yaml"
@@ -62,8 +62,8 @@ EOF
 
     su $SUDO_USER -c "kubectl patch configmap/config-network --namespace knative-serving --type merge --patch '{\"data\":{\"ingress-class\":\"contour.ingress.networking.knative.dev\"}}'"
 
-    wget https://github.com/knative/eventing/releases/download/knative-v1.0.0/eventing-crds.yaml -P tmp/
-    wget https://github.com/knative/eventing/releases/download/knative-v1.0.0/eventing-core.yaml -P tmp/
+    wget https://github.com/knative/eventing/releases/download/knative-v1.3.0/eventing-crds.yaml -P tmp/
+    wget https://github.com/knative/eventing/releases/download/knative-v1.3.0/eventing-core.yaml -P tmp/
 
 
     su $SUDO_USER -c "kubectl apply -f tmp/eventing-crds.yaml"
@@ -181,7 +181,6 @@ case ${OS} in
       *)
         echo "NO VERSION MATCH"
         ;;
-    esac
     ;;
   *)
     echo "NO OS MATCH"
