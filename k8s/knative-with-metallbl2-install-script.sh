@@ -181,6 +181,7 @@ case ${OS} in
       *)
         echo "NO VERSION MATCH"
         ;;
+    esac
     ;;
   *)
     echo "NO OS MATCH"
