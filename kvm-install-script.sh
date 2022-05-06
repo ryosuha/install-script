@@ -27,11 +27,14 @@ echo $VERSION
 case ${OS} in
   "Ubuntu")
     case ${VERSION} in
+      "22.04")
+        apt-get install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager
+        ;;
       "20.04")
-        apt install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager
+        apt-get install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager
         ;;
       "18.04")
-        apt install -y qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
+        apt-get install -y qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
         ;;
       *)
         echo "NO VERSION MATCH"

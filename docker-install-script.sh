@@ -41,6 +41,9 @@ echo $VERSION
 case ${OS} in
   "Ubuntu")
     case ${VERSION} in
+      "22.04")
+        install_ubuntu
+        ;;
       "20.04")
         install_ubuntu
         ;;
