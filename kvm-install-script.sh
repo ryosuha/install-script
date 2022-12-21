@@ -28,6 +28,7 @@ case ${OS} in
   "Ubuntu")
     case ${VERSION} in
       "22.04")
+        export DEBIAN_FRONTEND=noninteractive
         apt-get install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager
         ;;
       "20.04")

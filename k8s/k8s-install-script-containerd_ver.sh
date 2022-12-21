@@ -3,9 +3,9 @@ set -e
 
 install_ubuntu2004() {
     kOS=xUbuntu_20.04
-    kVERSION=1.21:1.21.0
-    kVERSION1=1.21
-    kVERSIONLONG=1.21.0-00
+    kVERSION=1.26:1.26.0
+    kVERSION1=1.26
+    kVERSIONLONG=1.26.0-00
 
     if [ ${1} ]; then
         kVERSION=${1}:${1}.0
@@ -27,7 +27,7 @@ install_ubuntu2004() {
     sysctl --system
 
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    add-apt-repository --yes "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
     apt-get update
     apt-get install -y containerd.io
@@ -102,6 +102,7 @@ case ${OS} in
   "Ubuntu")
     case ${VERSION} in
       "22.04")
+        export DEBIAN_FRONTEND=noninteractive
         install_ubuntu2004 ${1}
         ;;
       "20.04")
@@ -109,7 +110,7 @@ case ${OS} in
         ;;
       "18.04")
         #install_ubuntu1804
-        echo "1804 Not Supported Yet"
+        echo "Install Script Not Supported"
         ;;
       *)
         echo "NO VERSION MATCH"

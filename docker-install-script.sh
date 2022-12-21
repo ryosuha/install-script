@@ -42,6 +42,7 @@ case ${OS} in
   "Ubuntu")
     case ${VERSION} in
       "22.04")
+        export DEBIAN_FRONTEND=noninteractive
         install_ubuntu
         ;;
       "20.04")
