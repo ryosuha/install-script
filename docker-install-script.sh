@@ -41,6 +41,10 @@ echo $VERSION
 case ${OS} in
   "Ubuntu")
     case ${VERSION} in
+      "24.04")
+        export DEBIAN_FRONTEND=noninteractive
+        install_ubuntu
+        ;;
       "22.04")
         export DEBIAN_FRONTEND=noninteractive
         install_ubuntu
