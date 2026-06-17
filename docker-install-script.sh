@@ -3,16 +3,24 @@ set -e
 
 #SUB ROUTINE
 install_ubuntu() {
+  apt-get update
   apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
 
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  install -m 0755 -d /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  chmod a+r /etc/apt/keyrings/docker.asc
 
-  echo \
-  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" |  tee /etc/apt/sources.list.d/docker.list > /dev/null
+tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
 
   apt-get update
-  apt-get install -y docker-ce docker-ce-cli containerd.io
+  apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 }
 
 # ref: https://askubuntu.com/a/30157/8698
@@ -41,6 +49,10 @@ echo $VERSION
 case ${OS} in
   "Ubuntu")
     case ${VERSION} in
+      "26.04")
+        export DEBIAN_FRONTEND=noninteractive
+        install_ubuntu
+        ;;
       "24.04")
         export DEBIAN_FRONTEND=noninteractive
         install_ubuntu
