@@ -27,6 +27,14 @@ echo $VERSION
 case ${OS} in
   "Ubuntu")
     case ${VERSION} in
+      "26.04")
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get install -y qemu-system-x86 libvirt-clients libvirt-daemon-system bridge-utils virt-manager
+        ;;
+      "24.04")
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager
+        ;;
       "22.04")
         export DEBIAN_FRONTEND=noninteractive
         apt-get install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager
